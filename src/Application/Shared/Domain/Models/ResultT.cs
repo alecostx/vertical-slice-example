@@ -1,4 +1,6 @@
-﻿namespace Newsletter.Api.Shared;
+﻿using System;
+
+namespace Application.Shared.Domain.Models;
 
 public class Result<TValue> : Result
 {

@@ -1,4 +1,6 @@
-﻿namespace Application.Entities;
+﻿using System;
+
+namespace Application.Shared.Infra.Database.Entities;
 
 public class Entity
 {

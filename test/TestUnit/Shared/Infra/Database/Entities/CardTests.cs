@@ -1,8 +1,7 @@
-﻿using Application.Entities;
+﻿
+namespace TestUnit.Shared.Infra.Database.Entities;
 
-namespace Newsletter.Api.Entities;
-
-public class Card : Entity
+public class Card
 {
     public string PrintedName { get; set; } = string.Empty;
 

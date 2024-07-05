@@ -1,7 +1,11 @@
+using Application.Shared.Infra.Database;
 using Carter;
 using FluentValidation;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
-using Newsletter.Api.Database;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +13,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<ApplicationDbContext>(o =>
-    o.UseSqlServer(builder.Configuration.GetConnectionString("Database")));
+    o.UseSqlServer(builder.Configuration.GetConnectionString("Database"))
+);
 
 var assembly = typeof(Program).Assembly;
 

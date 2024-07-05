@@ -1,4 +1,4 @@
-﻿namespace Newsletter.Api.Shared;
+﻿namespace Application.Shared.Domain.Models;
 
 public record Error(string Code, string Message)
 {

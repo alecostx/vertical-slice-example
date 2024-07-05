@@ -1,4 +1,4 @@
-﻿namespace Newsletter.Api.Contracts;
+﻿namespace Application.Features.Card.Models;
 
 public class CreateCardRequest
 {
