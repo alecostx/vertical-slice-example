@@ -1,9 +1,7 @@
-﻿namespace Newsletter.Api.Contracts;
+﻿namespace Application.Shared.Infra.Database.Entities;
 
-public class CardResponse
+public class Card : Entity
 {
-    public Ulid Id { get; set; }
-
     public string PrintedName { get; set; } = string.Empty;
 
     public int Status { get; set; }

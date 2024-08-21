@@ -1,15 +1,19 @@
-﻿using Carter;
+﻿using Application.Features.Card.Models;
+using Application.Shared.Domain.Models;
+using Application.Shared.Infra.Database;
+using Carter;
 using FluentValidation;
 using Mapster;
 using MediatR;
-using Newsletter.Api.Contracts;
-using Newsletter.Api.Database;
-using Newsletter.Api.Entities;
-using Newsletter.Api.Shared;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Routing;
+using System.Threading;
+using System.Threading.Tasks;
 
-namespace Newsletter.Api.Features.Articles;
+namespace Application.Features.Card.UseCases;
 
-public static class CreateCard
+public static class CreateCardHandle
 {
     public class Command : IRequest<Result<CardResponse>>
     {
@@ -45,7 +49,7 @@ public static class CreateCard
                     validationResult.ToString()));
             }
 
-            var card = new Card
+            var card = new Application.Shared.Infra.Database.Entities.Card
             {
                 PrintedName = request.PrintedName,
                 Status = 1,
@@ -71,16 +75,11 @@ public class CreateArticleEndpoint : ICarterModule
     {
         app.MapPost("api/card", async (CreateCardRequest request, ISender sender) =>
         {
-            var command = request.Adapt<CreateCard.Command>();
+            var command = request.Adapt<CreateCardHandle.Command>();
 
             var result = await sender.Send(command);
 
-            if (result.IsFailure)
-            {
-                return Results.BadRequest(result.Error);
-            }
-
-            return Results.Ok(result.Value);
+            return result.IsFailure ? Results.BadRequest(result.Error) : Results.Ok(result.Value);
         });
     }
 }

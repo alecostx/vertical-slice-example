@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Newsletter.Api.Entities;
+﻿using Application.Shared.Infra.Database.Entities;
+using Microsoft.EntityFrameworkCore;
 
-namespace Newsletter.Api.Database;
+namespace Application.Shared.Infra.Database;
 
 public class ApplicationDbContext : DbContext
 {

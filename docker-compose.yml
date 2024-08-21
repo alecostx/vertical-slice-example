@@ -6,7 +6,7 @@ services:
     container_name: Newsletter.Api
     build:
       context: .
-      dockerfile: Newsletter.Api/Dockerfile
+      dockerfile: src/Application/Dockerfile
     ports:
       - "5001:443"
 
